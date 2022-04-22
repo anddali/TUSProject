@@ -4,8 +4,8 @@ import numpy as np
 from flask import Flask, render_template, request
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import pickle
-from tensorflow import keras
-from tensorflow.keras.preprocessing import sequence
+#from tensorflow import keras
+#from tensorflow.keras.preprocessing import sequence
 from preprocess_tweets import process_tweet
 import json
 
@@ -52,16 +52,17 @@ def vader_sentiment_score(sentence):
 
 
 def neural_network_score(sentence):
-    try:
-        labels = ['Negative', 'Neutral', 'Positive']
-        s = tokenizer.texts_to_sequences([sentence])
-        s = sequence.pad_sequences(s, maxlen=100)
-        pred = nnmodel.predict(s)
-        print(pred)
-        return labels[np.argmax(pred)]
-    except Exception as e:
-        print(e)
-        return 'NA'
+    return 'NA'
+    #try:
+    #    labels = ['Negative', 'Neutral', 'Positive']
+    #    s = tokenizer.texts_to_sequences([sentence])
+    #    s = sequence.pad_sequences(s, maxlen=100)
+    #    pred = nnmodel.predict(s)
+    #    print(pred)
+    #    return labels[np.argmax(pred)]
+    #except Exception as e:
+    #    print(e)
+    #return 'NA'
 
 
 def get_sentiment_counts():
